@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net472;net8.0</TargetFrameworks>
+		<LangVersion>9</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<AnalysisLevel>latest-all</AnalysisLevel>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
+		<PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
+		<PackageReference Include="Works4me.Xurrent.GraphQL" Version="1.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Help\" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<Title>$(AssemblyName)</Title>
+		<Version>1.0.0</Version>
+		<Authors>Klaas Vandeweerdt</Authors>
+		<Description>A PowerShell module for accessing the Xurrent GraphQL API.</Description>
+		<Copyright>Copyright © 2025 Klaas Vandeweerdt</Copyright>
+		<PackageProjectUrl>https://github.com/klaasvandeweerdt/works4me-xurrent-graphql-powershell</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/klaasvandeweerdt/works4me-xurrent-graphql-powershell</RepositoryUrl>
+		<PackageTags>4me;Xurrent;Works4me;GraphQL</PackageTags>
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<FileVersion>1.0.0</FileVersion>
+	</PropertyGroup>
+
+	<Target Name="CopyHelpFilesBuild" AfterTargets="Build">
+		<Copy SourceFiles="$(ProjectDir)\Help\help.xml" DestinationFiles="$(OutputPath)\$(AssemblyName).dll-Help.xml" Condition="'$(TargetFramework)' != '' And $(ProjectDir) != ''" />
+	</Target>
+
+	<Target Name="CopyHelpFilesPublish" AfterTargets="Publish">
+		<Copy SourceFiles="$(ProjectDir)\Help\help.xml" DestinationFiles="$(PublishDir)\$(AssemblyName).dll-Help.xml" Condition="'$(TargetFramework)' != '' And $(ProjectDir) != ''" />
+	</Target>
+
+	<Target Name="CopyGraphQLModuleUpOne_AfterPublish"
+			AfterTargets="Publish"
+			Condition="'$(PublishDir)' != ''">
+
+		<ItemGroup>
+			<GraphQLModuleFiles Include="$(ProjectDir)Works4me.Xurrent.GraphQL.psd1"
+								Condition="Exists('$(ProjectDir)Works4me.Xurrent.GraphQL.psd1')" />
+			<GraphQLModuleFiles Include="$(ProjectDir)Works4me.Xurrent.GraphQL.psm1"
+								Condition="Exists('$(ProjectDir)Works4me.Xurrent.GraphQL.psm1')" />
+		</ItemGroup>
+
+		<PropertyGroup>
+			<NetParentDir>$([System.IO.Path]::GetFullPath('$(PublishDir)..\..\'))</NetParentDir>
+		</PropertyGroup>
+
+		<MakeDir Directories="$(NetParentDir)" Condition="!Exists('$(NetParentDir)')" />
+		<Copy SourceFiles="@(GraphQLModuleFiles)"
+			  DestinationFolder="$(NetParentDir)"
+			  SkipUnchangedFiles="true" />
+
+		<ItemGroup>
+			<ToDeleteCommon Include="$(PublishDir)*.deps.json" />
+			<ToDeleteCommon Include="$(PublishDir)System.Management.Automation.dll" />
+			<ToDeleteCommon Include="$(PublishDir)Works4me.Xurrent.GraphQL.PowerShell.pdb" />
+			<ToDeleteCommon Include="$(PublishDir)Works4me.Xurrent.GraphQL.PowerShell.xml" />
+		</ItemGroup>
+
+		<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Json.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Encodings.Web.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Diagnostics.DiagnosticSource.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.IO.Pipelines.dll" />
+			<ToDeleteTFM Include="$(PublishDir)runtimes\**\*.*" />
+		</ItemGroup>
+
+		<ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+			<ToDeleteTFM Include="$(PublishDir)System.Linq.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Threading.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Runtime.Numerics.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.IO.FileSystem.Primitives.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Security.Cryptography.OpenSsl.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Security.Cryptography.Primitives.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Collections.Concurrent.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.ComponentModel.Annotations.dll" />
+		</ItemGroup>
+
+		<Delete Files="@(ToDeleteCommon);@(ToDeleteTFM)" ContinueOnError="true" />
+		<RemoveDir Directories="$(PublishDir)runtimes"
+				   Condition="Exists('$(PublishDir)runtimes')"
+				   ContinueOnError="true" />
+	</Target>
+</Project>
