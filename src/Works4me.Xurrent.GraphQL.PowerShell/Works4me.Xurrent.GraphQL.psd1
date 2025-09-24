@@ -1,6 +1,6 @@
 ﻿@{
     RootModule = 'Works4me.Xurrent.GraphQL.psm1'
-    ModuleVersion = '1.0.3'
+    ModuleVersion = '1.0.3.1'
     GUID = '5c076dd0-2dce-4a5f-9adc-ecabe0a3e53c'
     Author = 'Klaas Vandeweerdt'
     CompanyName = 'Works4me'
@@ -455,6 +455,7 @@
             ProjectUri = 'https://github.com/klaasvandeweerdt/works4me-xurrent-graphql-powershell'
             IconUri = 'https://raw.githubusercontent.com/klaasvandeweerdt/works4me-xurrent-graphql/main/src/Works4me.Xurrent.GraphQL/.Package/Icon.png'
             RequireLicenseAcceptance = $true
+            ReleaseNotes = "Supported environments:`n- Windows PowerShell 5.1 (loads net472 build)`n- PowerShell 7.4+ running on .NET 8+ (loads net8.0 build)`n`nNot supported:`n- PowerShell 7.0–7.3 (end of support, requires upgrade to 7.4+)`n`nNote: Core users must update to PowerShell 7.4 or newer."
         }   
     }
 }
