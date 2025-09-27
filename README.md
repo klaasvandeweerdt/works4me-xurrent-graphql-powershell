@@ -42,7 +42,7 @@ A PowerShell Module for accessing the [Xurrent GraphQL API](https://developer.xu
 
 The stable version of the module is hosted on the [PowerShell Gallery](https://www.powershellgallery.com/packages/Works4me.Xurrent.GraphQL). You can install it easily using the following command:
 ```powershell
-Install-Module -Name Works4me.Xurrent.GraphQL
+Install-Module -Name Works4me.Xurrent.GraphQL -ProviderName PowerShellGet
 ```
 
 ## Quick Example
