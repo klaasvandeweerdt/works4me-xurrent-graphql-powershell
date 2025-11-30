@@ -1,6 +1,6 @@
 ﻿@{
     RootModule = 'Works4me.Xurrent.GraphQL.psm1'
-    ModuleVersion = '1.0.4.1'
+    ModuleVersion = '1.0.4.2'
     GUID = '5c076dd0-2dce-4a5f-9adc-ecabe0a3e53c'
     Author = 'Klaas Vandeweerdt'
     CompanyName = 'Works4me'
