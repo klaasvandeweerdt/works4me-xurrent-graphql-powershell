@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Works4me.Xurrent.GraphQL.PowerShell.Client
 {
@@ -24,16 +25,16 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Client
         }
 
         /// <summary>
-        /// Retrieves the first available <see cref="XurrentPowerShellClient"/> from the managed collection.
+        /// Retrieves the last available <see cref="XurrentPowerShellClient"/> from the managed collection.
         /// </summary>
-        /// <returns>The first registered <see cref="XurrentPowerShellClient"/>.</returns>
+        /// <returns>The last registered <see cref="XurrentPowerShellClient"/>.</returns>
         /// <exception cref="XurrentException">Thrown if no clients have been registered. A connection must be created first.</exception>
         public static XurrentPowerShellClient GetClient()
         {
             if (_clients.Count == 0)
                 throw new XurrentException("No active connection to a Xurrent instance found. Please establish a connection using New-XurrentConnection before proceeding.");
 
-            return _clients[0];
+            return _clients.Last();
         }
     }
 }

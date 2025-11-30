@@ -117,7 +117,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public string[]? PermittedCustomerIds { get; set; }
 
         /// <summary>
-        /// The hyperlink to the image file for the record.
+        /// The hyperlink to the image file for the record. This may be a 'data URL', allowing the image to be supplied directly without requiring a separate upload first.
         /// </summary>
         [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
         public Uri? PictureUri { get; set; }

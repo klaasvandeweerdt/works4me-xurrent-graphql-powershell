@@ -97,17 +97,31 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public PersonQuery? ProductOwner { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="ScrumWorkspaceQuery"/> in the <see cref="ProductBacklogQuery"/>, allowing related <see cref="ScrumWorkspace"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="RequestTemplateQuery"/> in the <see cref="ProductBacklogQuery"/>, allowing related <see cref="RequestTemplate"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
+        public RequestTemplateQuery? RequestTemplate { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ScrumWorkspaceQuery"/> in the <see cref="ProductBacklogQuery"/>, allowing related <see cref="ScrumWorkspace"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
         public ScrumWorkspaceQuery? ScrumWorkspaces { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ServiceInstanceQuery"/> in the <see cref="ProductBacklogQuery"/>, allowing related <see cref="ServiceInstance"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public ServiceInstanceQuery? ServiceInstance { get; set; }
 
         /// <summary>
         /// Applies one or more <see cref="QueryFilter{ProductBacklogFilterField}"/> conditions to the <see cref="ProductBacklogQuery"/>.<br/>
         /// Filters restrict which <see cref="ProductBacklog"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<ProductBacklogFilterField>[]? Filters { get; set; }
 
@@ -115,7 +129,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="ProductBacklogQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="ProductBacklog"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -159,8 +173,14 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (ProductOwner is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ProductOwner)))
                 query.SelectProductOwner(ProductOwner);
 
+            if (RequestTemplate is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RequestTemplate)))
+                query.SelectRequestTemplate(RequestTemplate);
+
             if (ScrumWorkspaces is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ScrumWorkspaces)))
                 query.SelectScrumWorkspaces(ScrumWorkspaces);
+
+            if (ServiceInstance is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstance)))
+                query.SelectServiceInstance(ServiceInstance);
 
             if (Filters is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Filters)))
             {

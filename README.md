@@ -71,7 +71,7 @@ It allows you to:
 
 ## Client
 The PowerShell module wraps the SDK in a session-managed client: `XurrentPowerShellClient`.
-You create it via `New-XurrentClient`; the client is then registered in a per-session manager so other cmdlets can reuse it (the first registered client is used by default when a `-Client` parameter isn't provided).
+You create it via `New-XurrentClient`; the client is then registered in a per-session manager so other cmdlets can reuse it (the last registered client is used by default when a `-Client` parameter isn't provided).
 
 ### Key properties (runtime-tunable):
 - `AccountId`: Active account ID for the client. You can change this after creation to switch accounts. 
@@ -181,7 +181,7 @@ The SDK converts these into fixed sentinel `[datetime]` values so your scripts d
 - Include the matching nested selections for the specific type(s) you expect; will be `$null` in the result.
 
 ### Client selection
-- Every query cmdlet supports an optional `-Client` parameter. If omitted, the first created client from the session manager is used.
+- Every query cmdlet supports an optional `-Client` parameter. If omitted, the last created client from the session manager is used.
 
 ## Mutations
 Mutations are used to create, update or delete single records. Each entity typically exposes:
@@ -204,7 +204,7 @@ See [Mutation Examples](#mutations-1) for practical usage.
 - Internally, parameters are mapped to the input object **only if they were bound** in the call.
 
 ### Client selection
-- Every mutation cmdlet supports an optional `-Client` parameter. If omitted, the first created client from the session manager is used.
+- Every mutation cmdlet supports an optional `-Client` parameter. If omitted, the last created client from the session manager is used.
 
 ## Attachments
 Use `New-XurrentAttachment` to **upload a file** to Xurrent and get an `AttachmentInput` you can pass to any mutation that supports attachments (e.g., info/remarks, notes, custom fields).

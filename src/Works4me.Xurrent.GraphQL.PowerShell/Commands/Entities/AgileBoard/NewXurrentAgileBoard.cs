@@ -63,35 +63,47 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public AgileBoardColumnInput[]? NewColumns { get; set; }
 
         /// <summary>
-        /// The hyperlink to the image file for the record.
+        /// The hyperlink to the image file for the record. This may be a 'data URL', allowing the image to be supplied directly without requiring a separate upload first.
         /// </summary>
         [Parameter(Mandatory = false, Position = 8, ValueFromPipelineByPropertyName = true)]
         public Uri? PictureUri { get; set; }
 
         /// <summary>
-        /// An identifier for the client application submitting the resource or the name of an external system.
+        /// Identifier of the request template that should be used as default when creating new requests directly on this agile board.
         /// </summary>
         [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        public string? RequestTemplateId { get; set; }
+
+        /// <summary>
+        /// Identifier of the service instance that should be used as default when creating new requests directly on this agile board.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
+        public string? ServiceInstanceId { get; set; }
+
+        /// <summary>
+        /// An identifier for the client application submitting the resource or the name of an external system.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="AgileBoardQuery"/> that defines which fields of the <see cref="AgileBoardCreatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
         public AgileBoardQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -129,6 +141,12 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(PictureUri)))
                 input.PictureUri = PictureUri;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(RequestTemplateId)))
+                input.RequestTemplateId = RequestTemplateId;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstanceId)))
+                input.ServiceInstanceId = ServiceInstanceId;
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Source)))
                 input.Source = Source;

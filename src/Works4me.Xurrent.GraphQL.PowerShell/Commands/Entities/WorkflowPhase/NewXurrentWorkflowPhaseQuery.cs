@@ -20,24 +20,12 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public WorkflowPhaseField[] Properties { get; set; } = Array.Empty<WorkflowPhaseField>();
 
         /// <summary>
-        /// Sets the maximum number of <see cref="WorkflowPhase"/> items returned per request in the <see cref="WorkflowPhaseQuery"/>.<br/>
-        /// Valid range: 1–100; values outside this range are rejected.<br/>
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        [ValidateRange(1, 100)]
-        public int? ItemsPerRequest { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet processing logic.<br/>
         /// Builds a <see cref="WorkflowPhaseQuery"/> based on the provided parameters and writes the configured query object to the pipeline.<br/>
         /// </summary>
         protected override void OnProcessRecord()
         {
             WorkflowPhaseQuery query = new();
-
-            if (ItemsPerRequest is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ItemsPerRequest)))
-                query.ItemsPerRequest(ItemsPerRequest.Value);
 
             query.Select(Properties);
             WriteObject(query);

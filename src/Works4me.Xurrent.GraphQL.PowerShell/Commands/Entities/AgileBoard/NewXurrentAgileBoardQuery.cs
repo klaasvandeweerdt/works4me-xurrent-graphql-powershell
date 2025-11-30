@@ -104,10 +104,24 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public PersonQuery? Manager { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="RequestTemplateQuery"/> in the <see cref="AgileBoardQuery"/>, allowing related <see cref="RequestTemplate"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RequestTemplateQuery? RequestTemplate { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ServiceInstanceQuery"/> in the <see cref="AgileBoardQuery"/>, allowing related <see cref="ServiceInstance"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public ServiceInstanceQuery? ServiceInstance { get; set; }
+
+        /// <summary>
         /// Applies one or more <see cref="QueryFilter{AgileBoardFilterField}"/> conditions to the <see cref="AgileBoardQuery"/>.<br/>
         /// Filters restrict which <see cref="AgileBoard"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<AgileBoardFilterField>[]? Filters { get; set; }
 
@@ -115,7 +129,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="AgileBoardQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="AgileBoard"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -161,6 +175,12 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (Manager is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Manager)))
                 query.SelectManager(Manager);
+
+            if (RequestTemplate is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RequestTemplate)))
+                query.SelectRequestTemplate(RequestTemplate);
+
+            if (ServiceInstance is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstance)))
+                query.SelectServiceInstance(ServiceInstance);
 
             if (Filters is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Filters)))
             {
