@@ -125,6 +125,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public RequestTemplateQuery? OwnerAsRequestTemplate { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="RfcTypeQuery"/> in the <see cref="TranslationQuery"/>, allowing related Owner data, cast to <see cref="RfcType"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RfcTypeQuery? OwnerAsRfcType { get; set; }
+
+        /// <summary>
         /// Includes a nested <see cref="RiskSeverityQuery"/> in the <see cref="TranslationQuery"/>, allowing related Owner data, cast to <see cref="RiskSeverity"/>, to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
@@ -193,6 +200,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public UiExtensionQuery? OwnerAsUiExtension { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="WorkflowTaskTemplateQuery"/> in the <see cref="TranslationQuery"/>, allowing related Owner data, cast to <see cref="WorkflowTaskTemplate"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public WorkflowTaskTemplateQuery? OwnerAsWorkflowTaskTemplate { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WorkflowTemplatePhaseQuery"/> in the <see cref="TranslationQuery"/>, allowing related Owner data, cast to <see cref="WorkflowTemplatePhase"/>, to be retrieved as part of the query.
@@ -276,6 +290,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (OwnerAsRequestTemplate is not null && MyInvocation.BoundParameters.ContainsKey(nameof(OwnerAsRequestTemplate)))
                 query.SelectOwner(OwnerAsRequestTemplate);
 
+            if (OwnerAsRfcType is not null && MyInvocation.BoundParameters.ContainsKey(nameof(OwnerAsRfcType)))
+                query.SelectOwner(OwnerAsRfcType);
+
             if (OwnerAsRiskSeverity is not null && MyInvocation.BoundParameters.ContainsKey(nameof(OwnerAsRiskSeverity)))
                 query.SelectOwner(OwnerAsRiskSeverity);
 
@@ -305,6 +322,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (OwnerAsUiExtension is not null && MyInvocation.BoundParameters.ContainsKey(nameof(OwnerAsUiExtension)))
                 query.SelectOwner(OwnerAsUiExtension);
+
+            if (OwnerAsWorkflowTaskTemplate is not null && MyInvocation.BoundParameters.ContainsKey(nameof(OwnerAsWorkflowTaskTemplate)))
+                query.SelectOwner(OwnerAsWorkflowTaskTemplate);
 
             if (OwnerAsWorkflowTemplatePhase is not null && MyInvocation.BoundParameters.ContainsKey(nameof(OwnerAsWorkflowTemplatePhase)))
                 query.SelectOwner(OwnerAsWorkflowTemplatePhase);

@@ -129,54 +129,60 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public bool? RequiresShipping { get; set; }
 
         /// <summary>
-        /// The shop description of the shop article.
+        /// The service offering ids linked to the shop article.
         /// </summary>
         [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
+        public string[]? ServiceOfferingIds { get; set; }
+
+        /// <summary>
+        /// The shop description of the shop article.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
         public string? ShortDescription { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// The moment the shop article becomes available in the shop.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
         public DateTime? StartAt { get; set; }
 
         /// <summary>
         /// The Time zone related to the calendar.<br/>
         /// The list with possible values is available on the Xurrent developer site.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
         public string? TimeZone { get; set; }
 
         /// <summary>
         /// UI extension that is to be applied to the record.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         public string? UiExtensionId { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="ShopArticleQuery"/> that defines which fields of the <see cref="ShopArticleUpdatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         public ShopArticleQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -244,6 +250,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(RequiresShipping)))
                 input.RequiresShipping = RequiresShipping;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ServiceOfferingIds)))
+                input.ServiceOfferingIds = ServiceOfferingIds is null ? new() : new(ServiceOfferingIds);
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ShortDescription)))
                 input.ShortDescription = ShortDescription;

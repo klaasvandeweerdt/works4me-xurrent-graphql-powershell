@@ -85,15 +85,21 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public EffortClassRateIDInput[]? NewEffortClassRateIDs { get; set; }
 
         /// <summary>
-        /// Represents the activityIDs for standard service requests. The Activity ID is the unique identifier by which an activity that is performed in the context of a service offering is known in the billing system of the service provider.
+        /// Represents the activityIDs for request for change types. The Activity ID is the unique identifier by which an activity that is performed in the context of a service offering is known in the billing system of the service provider.
         /// </summary>
         [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        public RfcTypeActivityIDInput[]? NewRfcTypeActivityIDs { get; set; }
+
+        /// <summary>
+        /// Represents the activityIDs for standard service requests. The Activity ID is the unique identifier by which an activity that is performed in the context of a service offering is known in the billing system of the service provider.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
         public StandardServiceRequestActivityIDInput[]? NewStandardServiceRequestActivityIDs { get; set; }
 
         /// <summary>
         /// The last day on which the service provider organization can still be contacted to terminate the service level agreement (SLA) to ensure that it expires on the intended expiry date. The Notice date field is left empty, and the Expiry date field is filled out, when the SLA is to expire on a specific date and no notice needs to be given to terminate it.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
 #if NET6_0_OR_GREATER
                 public DateOnly? NoticeDate { get; set; }
 #else
@@ -103,79 +109,85 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// <summary>
         /// Identifiers of the organizations of the service level agreement. Only available for service level agreements where the coverage field is set to organizations_and_descendants, organizations or organizations_and_sites.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         public string[]? OrganizationIds { get; set; }
 
         /// <summary>
         /// Identifiers of the people of the service level agreement. Only available for service level agreements where the coverage field is set to people.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
         public string[]? PersonIds { get; set; }
 
         /// <summary>
         /// Any additional information about the service level agreement that might prove useful.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
         public string? Remarks { get; set; }
 
         /// <summary>
         /// The attachments used in the remarks field.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
         public AttachmentInput[]? RemarksAttachments { get; set; }
+
+        /// <summary>
+        /// Identifiers of RFC type activityIDs to remove from the SLA.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        public string[]? RfcTypeActivityIDsToDelete { get; set; }
 
         /// <summary>
         /// Identifier of the service instance that will be used to provide the service to the customer of the service level agreement. Only service instances that are linked to the same service as the selected service offering can be selected.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
         public string? ServiceInstanceId { get; set; }
 
         /// <summary>
         /// Identifier of the person of the service provider organization who acts as the service level manager for the customer of the service level agreement.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
         public string? ServiceLevelManagerId { get; set; }
 
         /// <summary>
         /// Identifier of the service offering that specifies the conditions that apply to the service level agreement.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
         public string? ServiceOfferingId { get; set; }
 
         /// <summary>
         /// Identifiers of the sites of the service level agreement. Only available for service level agreements where the coverage field is set to sites or organizations_and_sites.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
         public string[]? SiteIds { get; set; }
 
         /// <summary>
         /// Identifiers of the skill pools of the service level agreement. Only available for service level agreements where the coverage field is set to skill_pools.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
         public string[]? SkillPoolIds { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
-        /// Identifiers of effort class rateIDs to remove from the SLA.
+        /// Identifiers of standard service request activityIDs to remove from the SLA.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         public string[]? StandardServiceRequestActivityIDsToDelete { get; set; }
 
         /// <summary>
         /// The first day during which the service level agreement (SLA) is active.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
 #if NET6_0_OR_GREATER
                 public DateOnly? StartDate { get; set; }
 #else
@@ -185,27 +197,27 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// <summary>
         /// The current status of the service level agreement (SLA).
         /// </summary>
-        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
         public AgreementStatus? Status { get; set; }
 
         /// <summary>
         /// Whether knowledge articles from the service provider should be exposed to the people covered by the service instances related to the service level agreement. Only available for service level agreements where the coverage field is set to service_instances.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
         public bool? UseKnowledgeFromServiceProvider { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="ServiceLevelAgreementQuery"/> that defines which fields of the <see cref="ServiceLevelAgreementUpdatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
         public ServiceLevelAgreementQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -250,6 +262,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (MyInvocation.BoundParameters.ContainsKey(nameof(NewEffortClassRateIDs)))
                 input.NewEffortClassRateIDs = NewEffortClassRateIDs is null ? new() : new(NewEffortClassRateIDs);
 
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(NewRfcTypeActivityIDs)))
+                input.NewRfcTypeActivityIDs = NewRfcTypeActivityIDs is null ? new() : new(NewRfcTypeActivityIDs);
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(NewStandardServiceRequestActivityIDs)))
                 input.NewStandardServiceRequestActivityIDs = NewStandardServiceRequestActivityIDs is null ? new() : new(NewStandardServiceRequestActivityIDs);
 
@@ -267,6 +282,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(RemarksAttachments)))
                 input.RemarksAttachments = RemarksAttachments is null ? new() : new(RemarksAttachments);
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(RfcTypeActivityIDsToDelete)))
+                input.RfcTypeActivityIDsToDelete = RfcTypeActivityIDsToDelete is null ? new() : new(RfcTypeActivityIDsToDelete);
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstanceId)))
                 input.ServiceInstanceId = ServiceInstanceId;

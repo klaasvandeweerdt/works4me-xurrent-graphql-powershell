@@ -174,16 +174,23 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public TeamQuery? Team { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="UiExtensionQuery"/> in the <see cref="WorkflowTaskTemplateQuery"/>, allowing related <see cref="UiExtension"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="TranslationQuery"/> in the <see cref="WorkflowTaskTemplateQuery"/>, allowing related <see cref="Translation"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public TranslationQuery? Translations { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="UiExtensionQuery"/> in the <see cref="WorkflowTaskTemplateQuery"/>, allowing related <see cref="UiExtension"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public UiExtensionQuery? UiExtension { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WorkflowTemplateQuery"/> in the <see cref="WorkflowTaskTemplateQuery"/>, allowing related <see cref="WorkflowTemplate"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public WorkflowTemplateQuery? WorkflowTemplates { get; set; }
 
@@ -191,7 +198,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Applies one or more <see cref="QueryFilter{WorkflowTaskTemplateFilterField}"/> conditions to the <see cref="WorkflowTaskTemplateQuery"/>.<br/>
         /// Filters restrict which <see cref="WorkflowTaskTemplate"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<WorkflowTaskTemplateFilterField>[]? Filters { get; set; }
 
@@ -199,7 +206,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="WorkflowTaskTemplateQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="WorkflowTaskTemplate"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -275,6 +282,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (Team is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Team)))
                 query.SelectTeam(Team);
+
+            if (Translations is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Translations)))
+                query.SelectTranslations(Translations);
 
             if (UiExtension is not null && MyInvocation.BoundParameters.ContainsKey(nameof(UiExtension)))
                 query.SelectUiExtension(UiExtension);

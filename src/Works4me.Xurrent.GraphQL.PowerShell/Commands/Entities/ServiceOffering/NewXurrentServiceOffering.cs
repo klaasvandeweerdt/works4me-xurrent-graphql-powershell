@@ -118,336 +118,342 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public EffortClassRateInput[]? NewEffortClassRates { get; set; }
 
         /// <summary>
-        /// Standard service requests of the service offering.
+        /// RFC type rates of the service offering.
         /// </summary>
         [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
+        public RfcTypeRateInput[]? NewRfcTypeRates { get; set; }
+
+        /// <summary>
+        /// Standard service requests of the service offering.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
         public StandardServiceRequestInput[]? NewStandardServiceRequests { get; set; }
 
         /// <summary>
         /// Used to specify what the penalties will be for the service provider organization if a service level target has been breached.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
         public string? Penalties { get; set; }
 
         /// <summary>
         /// Used to describe the transaction(s) and the maximum time these transaction(s) can take to complete.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
         public string? Performance { get; set; }
 
         /// <summary>
         /// Used to specify which requirements need to be met by the customer in order for the customer to be able to benefit from the service. The service provider cannot be held accountable for breaches of the service level targets caused by a failure of the customer to meet one or more of these prerequisites.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
         public string? Prerequisites { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a Case.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
         public decimal? RateCase { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a Case.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
         public Currency? RateCaseCurrency { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a high incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
         public decimal? RateHigh { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a high incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         public Currency? RateHighCurrency { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a low incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         public decimal? RateLow { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a low incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
         public Currency? RateLowCurrency { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a medium incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
         public decimal? RateMedium { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a medium incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
         public Currency? RateMediumCurrency { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a RFC.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
         public decimal? RateRfc { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a RFC.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
         public Currency? RateRfcCurrency { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a RFI.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
         public decimal? RateRfi { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a RFI.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
         public Currency? RateRfiCurrency { get; set; }
 
         /// <summary>
         /// Defines the fixed price rate for a top incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
         public decimal? RateTop { get; set; }
 
         /// <summary>
         /// Defines the currency for the fixed price rate of a top incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
         public Currency? RateTopCurrency { get; set; }
 
         /// <summary>
         /// The Recovery Point Objective (RPO) is the maximum targeted duration in minutes in which data (transactions) might be lost from an IT service due to a major incident.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
         public long? RecoveryPointObjective { get; set; }
 
         /// <summary>
         /// The Recovery Time Objective (RTO) is the maximum targeted duration in minutes in which a business process must be restored after a disaster (or disruption) in order to avoid unacceptable consequences associated with a break in business continuity.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
         public long? RecoveryTimeObjective { get; set; }
 
         /// <summary>
         /// Used to specify the maximum number of times per month that the service may become unavailable to customers with an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
         public string? Reliability { get; set; }
 
         /// <summary>
         /// Used to specify how often the representative of a customer of an active SLA that is based on the service offering will receive a report comparing the service level targets specified in the service offering with the actual level of service provided.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
         public ServiceOfferingReportFrequency? ReportFrequency { get; set; }
 
         /// <summary>
         /// The minimum percentage of incidents that is to be resolved before their resolution target.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionsWithinTarget { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the category "Case" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 41, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetCase { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the impact value "High - Service Degraded for Several Users" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 41, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 42, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetHigh { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the impact value "Low - Service Degraded for One User" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 42, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 43, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetLow { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the impact value "Medium - Service Down for One User" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 43, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 44, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetMedium { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the category "RFC - Request for Change" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 44, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 45, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetRfc { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the category "RFI - Request for Information" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 45, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 46, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetRfi { get; set; }
 
         /// <summary>
         /// The number of minutes within which a request with the impact value "Top - Service Down for Several Users" is to be resolved when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 46, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 47, ValueFromPipelineByPropertyName = true)]
         public long? ResolutionTargetTop { get; set; }
 
         /// <summary>
         /// The minimum percentage of incidents that is to be responded to before their response target.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 47, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 48, ValueFromPipelineByPropertyName = true)]
         public long? ResponsesWithinTarget { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the category "Case" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 48, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 49, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetCase { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the impact "High - Service Degraded for Several Users" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 49, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 50, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetHigh { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the impact "Low - Service Degraded for One User" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 50, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 51, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetLow { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the impact "Medium - Service Down for One User" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 51, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 52, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetMedium { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the category "RFC - Request for Change" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 52, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 53, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetRfc { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the category "RFI - Request for Information" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 53, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 54, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetRfi { get; set; }
 
         /// <summary>
         /// The number of minutes within which a response needs to have been provided for a request with the impact "Top - Service Down for Several Users" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 54, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 55, ValueFromPipelineByPropertyName = true)]
         public long? ResponseTargetTop { get; set; }
 
         /// <summary>
         /// How often an active SLA that is based on the service offering will be reviewed with the representative of its customer.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 55, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 56, ValueFromPipelineByPropertyName = true)]
         public ServiceOfferingReviewFrequency? ReviewFrequency { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the hours during which the service is supposed to be available.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 56, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 57, ValueFromPipelineByPropertyName = true)]
         public string? ServiceHoursId { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 57, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 58, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 58, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 59, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// The current status of the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 59, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 60, ValueFromPipelineByPropertyName = true)]
         public ServiceOfferingStatus? Status { get; set; }
 
         /// <summary>
         /// A high-level description of the differentiators between this service offering and other service offerings that have already been, or could be, prepared for the same service.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 60, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 61, ValueFromPipelineByPropertyName = true)]
         public string? Summary { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the category "Case" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 61, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 62, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursCaseId { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the impact "High - Service Degraded for Several Users" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 62, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 63, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursHighId { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the impact "Low - Service Degraded for One User" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 63, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 64, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursLowId { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the impact "Medium - Service Down for One User" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 64, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 65, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursMediumId { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the category "RFC - Request for Change" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 65, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 66, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursRfcId { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the category "RFI - Request for Information" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 66, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 67, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursRfiId { get; set; }
 
         /// <summary>
         /// Identifier of the calendar that defines the support hours for a request with the impact "Top - Service Down for Several Users" when it affects an active SLA that is based on the service offering.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 67, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 68, ValueFromPipelineByPropertyName = true)]
         public string? SupportHoursTopId { get; set; }
 
         /// <summary>
         /// Used to describe the length of notice required for changing or terminating the service level agreement.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 68, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 69, ValueFromPipelineByPropertyName = true)]
         public string? Termination { get; set; }
 
         /// <summary>
         /// The time zone that applies to the selected service hours.<br/>
         /// The list with possible values is available on the Xurrent developer site.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 69, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 70, ValueFromPipelineByPropertyName = true)]
         public string? TimeZone { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="ServiceOfferingQuery"/> that defines which fields of the <see cref="ServiceOfferingCreatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 70, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 71, ValueFromPipelineByPropertyName = true)]
         public ServiceOfferingQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 71, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 72, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -509,6 +515,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(NewEffortClassRates)))
                 input.NewEffortClassRates = NewEffortClassRates is null ? new() : new(NewEffortClassRates);
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(NewRfcTypeRates)))
+                input.NewRfcTypeRates = NewRfcTypeRates is null ? new() : new(NewRfcTypeRates);
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(NewStandardServiceRequests)))
                 input.NewStandardServiceRequests = NewStandardServiceRequests is null ? new() : new(NewStandardServiceRequests);

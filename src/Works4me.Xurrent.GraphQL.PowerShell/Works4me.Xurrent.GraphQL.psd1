@@ -1,10 +1,10 @@
 ﻿@{
     RootModule = 'Works4me.Xurrent.GraphQL.psm1'
-    ModuleVersion = '1.0.4.2'
+    ModuleVersion = '1.0.6'
     GUID = '5c076dd0-2dce-4a5f-9adc-ecabe0a3e53c'
     Author = 'Klaas Vandeweerdt'
     CompanyName = 'Works4me'
-    Copyright = 'Copyright (c) 2025 Klaas Vandeweerdt'
+    Copyright = 'Copyright (c) 2026 Klaas Vandeweerdt'
     Description = 'This PowerShell module provides an easy and efficient way to interact with the Xurrent GraphQL API. The module leverages the Works4me.Xurrent.GraphQL library to simplify the process of interacting with the Xurrent GraphQL API, allowing you to take full advantage of its query and mutation capabilities.'
     PowerShellVersion = '5.1'
     CompatiblePSEditions = @('Desktop', 'Core')
@@ -66,6 +66,10 @@
         'Invoke-XurrentCalendarQuery',
         'New-XurrentCalendarQuery',
         'New-XurrentCalendarQueryFilter',
+        'Set-XurrentCiStagedChange',
+        'Invoke-XurrentCiStagedChangeQuery',
+        'New-XurrentCiStagedChangeQuery',
+        'New-XurrentCiStagedChangeQueryFilter',
         'New-XurrentClient',
         'Test-XurrentClientTokenQuota',
         'New-XurrentClosureCode',
@@ -246,6 +250,7 @@
         'Invoke-XurrentRequestTemplateQuery',
         'New-XurrentRequestTemplateQuery',
         'New-XurrentRequestTemplateQueryFilter',
+        'Set-XurrentRequestVisibility',
         'New-XurrentReservation',
         'Set-XurrentReservation',
         'New-XurrentReservationOffering',
@@ -256,6 +261,9 @@
         'Invoke-XurrentReservationQuery',
         'New-XurrentReservationQuery',
         'New-XurrentReservationQueryFilter',
+        'New-XurrentRfcTypeActivityIDQuery',
+        'New-XurrentRfcTypeQuery',
+        'New-XurrentRfcTypeRateQuery',
         'New-XurrentRisk',
         'Set-XurrentRisk',
         'Invoke-XurrentRiskQuery',
@@ -397,6 +405,8 @@
         'New-XurrentUiExtensionQuery',
         'New-XurrentUiExtensionQueryFilter',
         'New-XurrentUiExtensionVersionQuery',
+        'Set-XurrentVirtualAgentDesign',
+        'New-XurrentVirtualAgentDesignQuery',
         'New-XurrentWaitingForCustomerFollowUp',
         'Set-XurrentWaitingForCustomerFollowUp',
         'Invoke-XurrentWaitingForCustomerFollowUpQuery',
@@ -455,7 +465,7 @@
             ProjectUri = 'https://github.com/klaasvandeweerdt/works4me-xurrent-graphql-powershell'
             IconUri = 'https://raw.githubusercontent.com/klaasvandeweerdt/works4me-xurrent-graphql/main/src/Works4me.Xurrent.GraphQL/.Package/Icon.png'
             RequireLicenseAcceptance = $true
-            ReleaseNotes = "Supported environments:`n- Windows PowerShell 5.1 (loads net472 build)`n- PowerShell 7.4+ running on .NET 8+ (loads net8.0 build)`n`nNot supported:`n- PowerShell 7.0–7.3 (end of support, requires upgrade to 7.4+)`n`nNote: Core users must update to PowerShell 7.4 or newer."                
+            ReleaseNotes = "Supported environments:`n- Windows PowerShell 5.1 (loads net472 build)`n- PowerShell 7.4+ running on .NET 8+`n`nNot supported:`n- PowerShell 7.0–7.3 (end of support, requires upgrade to 7.4+)`n`nNote: Core users must update to PowerShell 7.4 or newer."                
         }   
     }
 }

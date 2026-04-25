@@ -139,65 +139,72 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public ReservationOfferingQuery? ReservationOfferings { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="ServiceQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Service"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="RfcTypeQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="RfcType"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RfcTypeQuery? RfcType { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ServiceQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Service"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ServiceQuery? Service { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="StandardServiceRequestQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="StandardServiceRequest"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public StandardServiceRequestQuery? StandardServiceRequests { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="OrganizationQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Organization"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public OrganizationQuery? Supplier { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHours { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="TeamQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Team"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public TeamQuery? Team { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="TranslationQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Translation"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public TranslationQuery? Translations { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="UiExtensionQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="UiExtension"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public UiExtensionQuery? UiExtension { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="PersonQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="Person"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public PersonQuery? WorkflowManager { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WorkflowTemplateQuery"/> in the <see cref="RequestTemplateQuery"/>, allowing related <see cref="WorkflowTemplate"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public WorkflowTemplateQuery? WorkflowTemplate { get; set; }
 
@@ -205,7 +212,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Applies one or more <see cref="QueryFilter{RequestTemplateFilterField}"/> conditions to the <see cref="RequestTemplateQuery"/>.<br/>
         /// Filters restrict which <see cref="RequestTemplate"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<RequestTemplateFilterField>[]? Filters { get; set; }
 
@@ -213,7 +220,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="RequestTemplateQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="RequestTemplate"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -274,6 +281,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (ReservationOfferings is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ReservationOfferings)))
                 query.SelectReservationOfferings(ReservationOfferings);
+
+            if (RfcType is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RfcType)))
+                query.SelectRfcType(RfcType);
 
             if (Service is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Service)))
                 query.SelectService(Service);

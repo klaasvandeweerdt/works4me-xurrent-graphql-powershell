@@ -5,6 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "PowerShell parameter binding requires array properties for correct cmdlet usage.")]
+[assembly: SuppressMessage("Performance", "CA1873:Avoid potentially expensive logging message formatting", Justification = "Logging is routed to PowerShell verbose stream; cost is acceptable and controlled by -Verbose visibility.")]
 [assembly: SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "PowerShell cmdlets must catch all exceptions and translate them into ErrorRecords to provide consistent error handling to the user. Specific exceptions are handled first; the general catch ensures unexpected exceptions are reported cleanly without crashing the host.")]
 [assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "Flattened Works4me.Xurrent.GraphQL.PowerShell.Commands to keep code structured per object.", Scope = "namespace", Target = "~N:Works4me.Xurrent.GraphQL.PowerShell.Commands")]
 [assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Collection properties are settable to support serialization and data binding in entity models.")]

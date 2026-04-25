@@ -171,173 +171,185 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public AttachmentInput[]? NoteAttachments { get; set; }
 
         /// <summary>
-        /// ID of problem to link request to.
+        /// ID of the organization of the person for whom the request was submitted. Only people with the Account Administrator role are allowed to update this field, and the only accepted value is the organization of the current requested_for person.
         /// </summary>
         [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        public string? OrganizationId { get; set; }
+
+        /// <summary>
+        /// ID of problem to link request to.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
         public string? ProblemId { get; set; }
 
         /// <summary>
         /// Estimate of the relative size of this item on the product backlog.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
         public long? ProductBacklogEstimate { get; set; }
 
         /// <summary>
         /// Identifier of the product backlog this item is placed on.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
         public string? ProductBacklogId { get; set; }
 
         /// <summary>
         /// The (one based) position of this item on the backlog.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
         public long? ProductBacklogPosition { get; set; }
 
         /// <summary>
         /// ID of project to link request to.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
         public string? ProjectId { get; set; }
 
         /// <summary>
         /// Default: false - Whether the provider currently indicates not to be accountable.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
         public bool? ProviderNotAccountable { get; set; }
 
         /// <summary>
         /// ID of the person who submitted the request. Defaults to the Requested for field if its value was explicitely provided, otherwise it defaults to the current authenticated person.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
         public string? RequestedById { get; set; }
 
         /// <summary>
         /// ID of the person for whom the request was submitted. The person selected in the Requested by field is automatically selected in this field, but another person can be selected if the request is submitted for another person.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
         public string? RequestedForId { get; set; }
 
         /// <summary>
         /// Default: false - A request can be marked as reviewed by the problem manager of the service of the service instance that is linked to the request. Marking a request as reviewed excludes it from the 'Requests for Problem Identification' view.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
         public bool? Reviewed { get; set; }
+
+        /// <summary>
+        /// Identifier of the RFC type of the request.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
+        public string? RfcTypeId { get; set; }
 
         /// <summary>
         /// ID of the service instance in which the cause of the incident resides, for which the change is requested, or about which information is needed.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
         public string? ServiceInstanceId { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// Default: assigned - Used to select the current status of the request.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
         public RequestStatus? Status { get; set; }
 
         /// <summary>
         /// A short description of the request.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 41, ValueFromPipelineByPropertyName = true)]
         public string? Subject { get; set; }
 
         /// <summary>
         /// ID of the supplier organization that has been asked to assist with the request. The supplier organization is automatically selected in this field after a service instance has been selected that is provided by an external service provider organization.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 42, ValueFromPipelineByPropertyName = true)]
         public string? SupplierId { get; set; }
 
         /// <summary>
         /// The identifier under which the request has been registered at the supplier organization. If the supplier provided a link to the request, enter the entire URL in this field.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 41, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 43, ValueFromPipelineByPropertyName = true)]
         public string? SupplierRequestID { get; set; }
 
         /// <summary>
         /// Identifiers of tags to delete.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 42, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 44, ValueFromPipelineByPropertyName = true)]
         public string[]? TagsToDelete { get; set; }
 
         /// <summary>
         /// ID of the team to which the request is to be assigned. By default, the first line team of the service instance that is related to the request will be selected. If a first line team has not been specified for the service instance, the support team of the service instance will be selected instead.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 43, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 45, ValueFromPipelineByPropertyName = true)]
         public string? TeamId { get; set; }
 
         /// <summary>
         /// ID of the request template to apply to the request.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 44, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 46, ValueFromPipelineByPropertyName = true)]
         public string? TemplateId { get; set; }
 
         /// <summary>
         /// The justification of the time spent.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 45, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 47, ValueFromPipelineByPropertyName = true)]
         public string? TimeEntryDescription { get; set; }
 
         /// <summary>
         /// The time that you have spent working on the request since you started to work on it or, if you already entered some time for this request, since you last added your time spent in it.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 46, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 48, ValueFromPipelineByPropertyName = true)]
         public long? TimeSpent { get; set; }
 
         /// <summary>
         /// The effort class that best reflects the type of effort for which time spent is being registered.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 47, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 49, ValueFromPipelineByPropertyName = true)]
         public string? TimeSpentEffortClassId { get; set; }
 
         /// <summary>
         /// Setting to true marks request as urgent.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 48, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 50, ValueFromPipelineByPropertyName = true)]
         public bool? Urgent { get; set; }
 
         /// <summary>
         /// The date and time at which the status of the request is to be updated from waiting_for to assigned. This field is available only when the Status field is set to waiting_for.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 49, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 51, ValueFromPipelineByPropertyName = true)]
         public DateTime? WaitingUntil { get; set; }
 
         /// <summary>
         /// Identifiers of watches to delete.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 50, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 52, ValueFromPipelineByPropertyName = true)]
         public string[]? WatchesToDelete { get; set; }
 
         /// <summary>
         /// ID of workflow to link request to.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 51, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 53, ValueFromPipelineByPropertyName = true)]
         public string? WorkflowId { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="RequestQuery"/> that defines which fields of the <see cref="RequestUpdatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 52, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 54, ValueFromPipelineByPropertyName = true)]
         public RequestQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 53, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 55, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -427,6 +439,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (MyInvocation.BoundParameters.ContainsKey(nameof(NoteAttachments)))
                 input.NoteAttachments = NoteAttachments is null ? new() : new(NoteAttachments);
 
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(OrganizationId)))
+                input.OrganizationId = OrganizationId;
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ProblemId)))
                 input.ProblemId = ProblemId;
 
@@ -453,6 +468,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Reviewed)))
                 input.Reviewed = Reviewed;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(RfcTypeId)))
+                input.RfcTypeId = RfcTypeId;
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstanceId)))
                 input.ServiceInstanceId = ServiceInstanceId;

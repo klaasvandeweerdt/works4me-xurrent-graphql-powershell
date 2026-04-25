@@ -104,16 +104,23 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public ProviderShopArticleQuery? ProviderShopArticle { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="TranslationQuery"/> in the <see cref="ShopArticleQuery"/>, allowing related <see cref="Translation"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="ServiceOfferingQuery"/> in the <see cref="ShopArticleQuery"/>, allowing related <see cref="ServiceOffering"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public ServiceOfferingQuery? ServiceOfferings { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="TranslationQuery"/> in the <see cref="ShopArticleQuery"/>, allowing related <see cref="Translation"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public TranslationQuery? Translations { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="UiExtensionQuery"/> in the <see cref="ShopArticleQuery"/>, allowing related <see cref="UiExtension"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public UiExtensionQuery? UiExtension { get; set; }
 
@@ -121,7 +128,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Applies one or more <see cref="QueryFilter{ShopArticleFilterField}"/> conditions to the <see cref="ShopArticleQuery"/>.<br/>
         /// Filters restrict which <see cref="ShopArticle"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<ShopArticleFilterField>[]? Filters { get; set; }
 
@@ -129,7 +136,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="ShopArticleQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="ShopArticle"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -175,6 +182,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (ProviderShopArticle is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ProviderShopArticle)))
                 query.SelectProviderShopArticle(ProviderShopArticle);
+
+            if (ServiceOfferings is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ServiceOfferings)))
+                query.SelectServiceOfferings(ServiceOfferings);
 
             if (Translations is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Translations)))
                 query.SelectTranslations(Translations);

@@ -146,6 +146,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public CalendarQuery? SelectedRecordsAsCalendar { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="CiStagedChangeQuery"/> in the <see cref="SyncSetQuery"/>, allowing related SelectedRecords data, cast to <see cref="CiStagedChange"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public CiStagedChangeQuery? SelectedRecordsAsCiStagedChange { get; set; }
+
+        /// <summary>
         /// Includes a nested <see cref="ClosureCodeQuery"/> in the <see cref="SyncSetQuery"/>, allowing related SelectedRecords data, cast to <see cref="ClosureCode"/>, to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
@@ -363,6 +370,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public ReservationQuery? SelectedRecordsAsReservation { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="RfcTypeQuery"/> in the <see cref="SyncSetQuery"/>, allowing related SelectedRecords data, cast to <see cref="RfcType"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RfcTypeQuery? SelectedRecordsAsRfcType { get; set; }
+
+        /// <summary>
         /// Includes a nested <see cref="RiskQuery"/> in the <see cref="SyncSetQuery"/>, allowing related SelectedRecords data, cast to <see cref="Risk"/>, to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
@@ -573,6 +587,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public UiExtensionQuery? SelectedRecordsAsUiExtension { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="VirtualAgentDesignQuery"/> in the <see cref="SyncSetQuery"/>, allowing related SelectedRecords data, cast to <see cref="VirtualAgentDesign"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public VirtualAgentDesignQuery? SelectedRecordsAsVirtualAgentDesign { get; set; }
+
+        /// <summary>
         /// Includes a nested <see cref="WaitingForCustomerFollowUpQuery"/> in the <see cref="SyncSetQuery"/>, allowing related SelectedRecords data, cast to <see cref="WaitingForCustomerFollowUp"/>, to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
@@ -697,6 +718,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (SelectedRecordsAsCalendar is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsCalendar)))
                 query.SelectSelectedRecords(SelectedRecordsAsCalendar);
 
+            if (SelectedRecordsAsCiStagedChange is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsCiStagedChange)))
+                query.SelectSelectedRecords(SelectedRecordsAsCiStagedChange);
+
             if (SelectedRecordsAsClosureCode is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsClosureCode)))
                 query.SelectSelectedRecords(SelectedRecordsAsClosureCode);
 
@@ -790,6 +814,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (SelectedRecordsAsReservation is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsReservation)))
                 query.SelectSelectedRecords(SelectedRecordsAsReservation);
 
+            if (SelectedRecordsAsRfcType is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsRfcType)))
+                query.SelectSelectedRecords(SelectedRecordsAsRfcType);
+
             if (SelectedRecordsAsRisk is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsRisk)))
                 query.SelectSelectedRecords(SelectedRecordsAsRisk);
 
@@ -879,6 +906,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (SelectedRecordsAsUiExtension is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsUiExtension)))
                 query.SelectSelectedRecords(SelectedRecordsAsUiExtension);
+
+            if (SelectedRecordsAsVirtualAgentDesign is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsVirtualAgentDesign)))
+                query.SelectSelectedRecords(SelectedRecordsAsVirtualAgentDesign);
 
             if (SelectedRecordsAsWaitingForCustomerFollowUp is not null && MyInvocation.BoundParameters.ContainsKey(nameof(SelectedRecordsAsWaitingForCustomerFollowUp)))
                 query.SelectSelectedRecords(SelectedRecordsAsWaitingForCustomerFollowUp);

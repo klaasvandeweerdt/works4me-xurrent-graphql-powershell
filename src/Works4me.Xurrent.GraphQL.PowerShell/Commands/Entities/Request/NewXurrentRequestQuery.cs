@@ -216,72 +216,79 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public PersonQuery? RequestedFor { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="ServiceInstanceQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="ServiceInstance"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="RfcTypeQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="RfcType"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RfcTypeQuery? RfcType { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ServiceInstanceQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="ServiceInstance"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ServiceInstanceQuery? ServiceInstance { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="SprintBacklogItemQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="SprintBacklogItem"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public SprintBacklogItemQuery? SprintBacklogItems { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="OrganizationQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="Organization"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public OrganizationQuery? Supplier { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="TagQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="Tag"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public TagQuery? Tags { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WorkflowTaskQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="WorkflowTask"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public WorkflowTaskQuery? Task { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="TeamQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="Team"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public TeamQuery? Team { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="RequestTemplateQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="RequestTemplate"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public RequestTemplateQuery? Template { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="TimeEntryQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="TimeEntry"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public TimeEntryQuery? TimeEntries { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WatchQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="Watch"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public WatchQuery? Watches { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WorkflowQuery"/> in the <see cref="RequestQuery"/>, allowing related <see cref="Workflow"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public WorkflowQuery? Workflow { get; set; }
 
@@ -289,7 +296,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Applies one or more <see cref="QueryFilter{RequestFilterField}"/> conditions to the <see cref="RequestQuery"/>.<br/>
         /// Filters restrict which <see cref="Request"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<RequestFilterField>[]? Filters { get; set; }
 
@@ -297,7 +304,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="RequestQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="Request"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -305,7 +312,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Filters the <see cref="Request"/> by custom fields marked as "Filterable" in their UI Extension.<br/>
         /// See the <see href="https://developer.xurrent.com/graphql/input_object/requestcustomfilter/">Xurrent developer</see> site for details.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 41, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CustomFilter[]? CustomFilters { get; set; }
 
@@ -399,6 +406,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (RequestedFor is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RequestedFor)))
                 query.SelectRequestedFor(RequestedFor);
+
+            if (RfcType is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RfcType)))
+                query.SelectRfcType(RfcType);
 
             if (ServiceInstance is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstance)))
                 query.SelectServiceInstance(ServiceInstance);

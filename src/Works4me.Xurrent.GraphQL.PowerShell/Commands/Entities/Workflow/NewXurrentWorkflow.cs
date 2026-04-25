@@ -62,89 +62,95 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public string? Note { get; set; }
 
         /// <summary>
-        /// Identifiers of all problems linked of this workflow.
+        /// Whether permissions to complete linked requests are restricted.
         /// </summary>
         [Parameter(Mandatory = false, Position = 8, ValueFromPipelineByPropertyName = true)]
+        public bool? PreventRequestCompletion { get; set; }
+
+        /// <summary>
+        /// Identifiers of all problems linked of this workflow.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
         public string[]? ProblemIds { get; set; }
 
         /// <summary>
         /// Linked project.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
         public string? ProjectId { get; set; }
 
         /// <summary>
         /// The release that the workflow is a part of.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
         public string? ReleaseId { get; set; }
 
         /// <summary>
         /// Identifiers of all requests linked to this workflow.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
         public string[]? RequestIds { get; set; }
 
         /// <summary>
         /// The service that will directly be affected by the workflow implementation, or in case of an emergency change, the service that was directly affected by the workflow implementation.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
         public string? ServiceId { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// The date and time at which the Status field of the first tasks of the workflow will automatically be set to "Assigned".
         /// </summary>
-        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
         public DateTime? StartAt { get; set; }
 
         /// <summary>
         /// Automatically set based on the status of the workflow's tasks.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
         public WorkflowStatus? Status { get; set; }
 
         /// <summary>
         /// A short description of the objective of the workflow.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
         public string? Subject { get; set; }
 
         /// <summary>
         /// The workflow template that was used to register the workflow.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
         public string? TemplateId { get; set; }
 
         /// <summary>
         /// Used to indicate whether the workflow needs to be implemented following the procedure steps for application changes or for infrastructure changes.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
         public string? WorkflowType { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="WorkflowQuery"/> that defines which fields of the <see cref="WorkflowCreatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
         public WorkflowQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -179,6 +185,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Note)))
                 input.Note = Note;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(PreventRequestCompletion)))
+                input.PreventRequestCompletion = PreventRequestCompletion;
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ProblemIds)))
                 input.ProblemIds = ProblemIds is null ? new() : new(ProblemIds);

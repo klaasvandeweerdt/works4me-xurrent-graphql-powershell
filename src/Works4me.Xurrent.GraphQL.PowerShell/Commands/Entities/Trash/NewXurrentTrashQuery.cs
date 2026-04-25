@@ -69,6 +69,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public AccountQuery? Account { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="CiStagedChangeQuery"/> in the <see cref="TrashQuery"/>, allowing related Trashed data, cast to <see cref="CiStagedChange"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public CiStagedChangeQuery? TrashedAsCiStagedChange { get; set; }
+
+        /// <summary>
         /// Includes a nested <see cref="ConfigurationItemQuery"/> in the <see cref="TrashQuery"/>, allowing related Trashed data, cast to <see cref="ConfigurationItem"/>, to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
@@ -116,6 +123,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public RequestQuery? TrashedAsRequest { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ReservationQuery"/> in the <see cref="TrashQuery"/>, allowing related Trashed data, cast to <see cref="Reservation"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public ReservationQuery? TrashedAsReservation { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="RiskQuery"/> in the <see cref="TrashQuery"/>, allowing related Trashed data, cast to <see cref="Risk"/>, to be retrieved as part of the query.
@@ -203,6 +217,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (Account is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Account)))
                 query.SelectAccount(Account);
 
+            if (TrashedAsCiStagedChange is not null && MyInvocation.BoundParameters.ContainsKey(nameof(TrashedAsCiStagedChange)))
+                query.SelectTrashed(TrashedAsCiStagedChange);
+
             if (TrashedAsConfigurationItem is not null && MyInvocation.BoundParameters.ContainsKey(nameof(TrashedAsConfigurationItem)))
                 query.SelectTrashed(TrashedAsConfigurationItem);
 
@@ -223,6 +240,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (TrashedAsRequest is not null && MyInvocation.BoundParameters.ContainsKey(nameof(TrashedAsRequest)))
                 query.SelectTrashed(TrashedAsRequest);
+
+            if (TrashedAsReservation is not null && MyInvocation.BoundParameters.ContainsKey(nameof(TrashedAsReservation)))
+                query.SelectTrashed(TrashedAsReservation);
 
             if (TrashedAsRisk is not null && MyInvocation.BoundParameters.ContainsKey(nameof(TrashedAsRisk)))
                 query.SelectTrashed(TrashedAsRisk);

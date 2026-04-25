@@ -188,107 +188,114 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public SlaNotificationSchemeQuery? ResponseTargetNotificationSchemeTop { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="ServiceQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Service"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="RfcTypeRateQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="RfcTypeRate"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RfcTypeRateQuery? RfcTypeRates { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ServiceQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Service"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ServiceQuery? Service { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? ServiceHours { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="ServiceLevelAgreementQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="ServiceLevelAgreement"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ServiceLevelAgreementQuery? ServiceLevelAgreements { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="ShopArticleQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="ShopArticle"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ShopArticleQuery? ShopArticles { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="StandardServiceRequestQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="StandardServiceRequest"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 28, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public StandardServiceRequestQuery? StandardServiceRequests { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="AttachmentQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Attachment"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 29, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public AttachmentQuery? SummaryAttachments { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 30, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursCase { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 31, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursHigh { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 32, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursLow { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 33, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursMedium { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 34, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursRfc { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 35, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursRfi { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="CalendarQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Calendar"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 36, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public CalendarQuery? SupportHoursTop { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="AttachmentQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="Attachment"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 37, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public AttachmentQuery? TerminationAttachments { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="WaitingForCustomerFollowUpQuery"/> in the <see cref="ServiceOfferingQuery"/>, allowing related <see cref="WaitingForCustomerFollowUp"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 38, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public WaitingForCustomerFollowUpQuery? WaitingForCustomerFollowUp { get; set; }
 
@@ -296,7 +303,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Applies one or more <see cref="QueryFilter{ServiceOfferingFilterField}"/> conditions to the <see cref="ServiceOfferingQuery"/>.<br/>
         /// Filters restrict which <see cref="ServiceOffering"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 39, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<ServiceOfferingFilterField>[]? Filters { get; set; }
 
@@ -304,7 +311,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="ServiceOfferingQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="ServiceOffering"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 40, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 41, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -386,6 +393,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (ResponseTargetNotificationSchemeTop is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ResponseTargetNotificationSchemeTop)))
                 query.SelectResponseTargetNotificationSchemeTop(ResponseTargetNotificationSchemeTop);
+
+            if (RfcTypeRates is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RfcTypeRates)))
+                query.SelectRfcTypeRates(RfcTypeRates);
 
             if (Service is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Service)))
                 query.SelectService(Service);

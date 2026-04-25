@@ -69,6 +69,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public AccountQuery? Account { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="CiStagedChangeQuery"/> in the <see cref="ArchiveQuery"/>, allowing related Archived data, cast to <see cref="CiStagedChange"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public CiStagedChangeQuery? ArchivedAsCiStagedChange { get; set; }
+
+        /// <summary>
         /// Includes a nested <see cref="ConfigurationItemQuery"/> in the <see cref="ArchiveQuery"/>, allowing related Archived data, cast to <see cref="ConfigurationItem"/>, to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
@@ -116,6 +123,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public RequestQuery? ArchivedAsRequest { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ReservationQuery"/> in the <see cref="ArchiveQuery"/>, allowing related Archived data, cast to <see cref="Reservation"/>, to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public ReservationQuery? ArchivedAsReservation { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="RiskQuery"/> in the <see cref="ArchiveQuery"/>, allowing related Archived data, cast to <see cref="Risk"/>, to be retrieved as part of the query.
@@ -203,6 +217,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
             if (Account is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Account)))
                 query.SelectAccount(Account);
 
+            if (ArchivedAsCiStagedChange is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ArchivedAsCiStagedChange)))
+                query.SelectArchived(ArchivedAsCiStagedChange);
+
             if (ArchivedAsConfigurationItem is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ArchivedAsConfigurationItem)))
                 query.SelectArchived(ArchivedAsConfigurationItem);
 
@@ -223,6 +240,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (ArchivedAsRequest is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ArchivedAsRequest)))
                 query.SelectArchived(ArchivedAsRequest);
+
+            if (ArchivedAsReservation is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ArchivedAsReservation)))
+                query.SelectArchived(ArchivedAsReservation);
 
             if (ArchivedAsRisk is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ArchivedAsRisk)))
                 query.SelectArchived(ArchivedAsRisk);

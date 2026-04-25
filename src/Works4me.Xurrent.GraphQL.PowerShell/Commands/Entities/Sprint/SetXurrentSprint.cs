@@ -45,65 +45,71 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public DateTime? EndAt { get; set; }
 
         /// <summary>
-        /// Sprint backlog items of this sprint.
+        /// Name of the sprint.
         /// </summary>
         [Parameter(Mandatory = false, Position = 5, ValueFromPipelineByPropertyName = true)]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Sprint backlog items of this sprint.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 6, ValueFromPipelineByPropertyName = true)]
         public SprintBacklogItemInput[]? NewSprintBacklogItems { get; set; }
 
         /// <summary>
         /// Sequence number of this sprint.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
         public long? Number { get; set; }
 
         /// <summary>
         /// Identifier of scrum workspace this sprint belongs to.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 8, ValueFromPipelineByPropertyName = true)]
         public string? ScrumWorkspaceId { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// Identifiers of sprint backlog items to remove from the sprint.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
         public string[]? SprintBacklogItemsToDelete { get; set; }
 
         /// <summary>
         /// The date and time the sprint started, or will start.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
         public DateTime? StartAt { get; set; }
 
         /// <summary>
         /// The current status of the sprint.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
         public SprintStatus? Status { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="SprintQuery"/> that defines which fields of the <see cref="SprintUpdatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         public SprintQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -129,6 +135,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(EndAt)))
                 input.EndAt = EndAt;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Name)))
+                input.Name = Name;
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(NewSprintBacklogItems)))
                 input.NewSprintBacklogItems = NewSprintBacklogItems is null ? new() : new(NewSprintBacklogItems);

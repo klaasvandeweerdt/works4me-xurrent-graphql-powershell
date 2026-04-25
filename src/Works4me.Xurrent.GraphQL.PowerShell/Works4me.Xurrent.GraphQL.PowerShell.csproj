@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net472;net8.0</TargetFrameworks>
+		<TargetFrameworks>net472;net8.0;net9.0;net10.0</TargetFrameworks>
 		<LangVersion>9</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -12,9 +12,24 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.11" />
 		<PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
-		<PackageReference Include="Works4me.Xurrent.GraphQL" Version="1.0.4.1" />
+		<PackageReference Include="Works4me.Xurrent.GraphQL" Version="1.0.6.0" />
+	</ItemGroup>
+	
+	<ItemGroup Condition="'$(TargetFramework)'=='net472' Or '$(TargetFramework)'=='netstandard2.0'">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.7" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.15" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.7" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,16 +39,48 @@
 	<PropertyGroup>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<Title>$(AssemblyName)</Title>
-		<Version>1.0.4.2</Version>
+		<Version>1.0.6</Version>
 		<Authors>Klaas Vandeweerdt</Authors>
 		<Description>A PowerShell module for accessing the Xurrent GraphQL API.</Description>
-		<Copyright>Copyright © 2025 Klaas Vandeweerdt</Copyright>
+		<Copyright>Copyright © 2026 Klaas Vandeweerdt</Copyright>
 		<PackageProjectUrl>https://github.com/klaasvandeweerdt/works4me-xurrent-graphql-powershell</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/klaasvandeweerdt/works4me-xurrent-graphql-powershell</RepositoryUrl>
 		<PackageTags>4me;Xurrent;Works4me;GraphQL</PackageTags>
-		<AssemblyVersion>1.0.4.2</AssemblyVersion>
-		<FileVersion>1.0.4.2</FileVersion>
+		<AssemblyVersion>1.0.6</AssemblyVersion>
+		<FileVersion>1.0.6</FileVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0|AnyCPU'">
+	  <WarningLevel>9999</WarningLevel>
 	</PropertyGroup>
 
 	<Target Name="CopyHelpFilesBuild" AfterTargets="Build">
@@ -65,14 +112,6 @@
 			<ToDeleteCommon Include="$(PublishDir)Works4me.Xurrent.GraphQL.PowerShell.xml" />
 		</ItemGroup>
 
-		<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-			<ToDeleteTFM Include="$(PublishDir)System.Text.Json.dll" />
-			<ToDeleteTFM Include="$(PublishDir)System.Text.Encodings.Web.dll" />
-			<ToDeleteTFM Include="$(PublishDir)System.Diagnostics.DiagnosticSource.dll" />
-			<ToDeleteTFM Include="$(PublishDir)System.IO.Pipelines.dll" />
-			<ToDeleteTFM Include="$(PublishDir)runtimes\**\*.*" />
-		</ItemGroup>
-
 		<ItemGroup Condition="'$(TargetFramework)' == 'net472'">
 			<ToDeleteTFM Include="$(PublishDir)System.Linq.dll" />
 			<ToDeleteTFM Include="$(PublishDir)System.Threading.dll" />
@@ -82,6 +121,30 @@
 			<ToDeleteTFM Include="$(PublishDir)System.Security.Cryptography.Primitives.dll" />
 			<ToDeleteTFM Include="$(PublishDir)System.Collections.Concurrent.dll" />
 			<ToDeleteTFM Include="$(PublishDir)System.ComponentModel.Annotations.dll" />
+		</ItemGroup>		
+
+		<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Json.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Encodings.Web.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Diagnostics.DiagnosticSource.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.IO.Pipelines.dll" />
+			<ToDeleteTFM Include="$(PublishDir)runtimes\**\*.*" />
+		</ItemGroup>
+
+		<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Json.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Encodings.Web.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Diagnostics.DiagnosticSource.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.IO.Pipelines.dll" />
+			<ToDeleteTFM Include="$(PublishDir)runtimes\**\*.*" />
+		</ItemGroup>
+
+		<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Json.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Text.Encodings.Web.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.Diagnostics.DiagnosticSource.dll" />
+			<ToDeleteTFM Include="$(PublishDir)System.IO.Pipelines.dll" />
+			<ToDeleteTFM Include="$(PublishDir)runtimes\**\*.*" />
 		</ItemGroup>
 
 		<Delete Files="@(ToDeleteCommon);@(ToDeleteTFM)" ContinueOnError="true" />

@@ -1,14 +1,15 @@
 ﻿<#
 .SYNOPSIS
-Chooses the correct binary at import time (net8.0 on Core/.NET 8+ or net472 on Windows PowerShell) and handles Desktop shim resolution.
+Chooses the correct binary at import time for the current PowerShell runtime and handles Desktop shim resolution.
 
 .DESCRIPTION
 - Windows PowerShell 5.1 (“Desktop”): forces TFM **net472** and:
   - Preloads common .NET Standard shim assemblies if they’re present in the TFM folder.
   - Installs an AppDomain.AssemblyResolve handler for the module lifetime and removes it on module unload.
-- PowerShell 7+ (“Core”): inspects the host’s runtime:
-  - If running on **.NET 8 or later**, uses TFM **net8.0**.
-  - If running on .NET 7 or earlier, import aborts with a clear upgrade message (requires PowerShell 7.4+ / .NET 8+).
+- PowerShell 7+ ("Core"): selects the packaged binary for the known PowerShell runtime range:
+  - PowerShell 7.4: net8.0
+  - PowerShell 7.5: net9.0
+  - PowerShell 7.6 and later: net10.0
 - If the selected binary is missing, import aborts with an error. (No TFM fallback.)
 
 .REQUIREMENTS
@@ -16,10 +17,10 @@ Chooses the correct binary at import time (net8.0 on Core/.NET 8+ or net472 on W
 
 .COMPATIBILITY
 - Desktop: .NET Framework with shimmed .NET Standard dependencies.
-- Core: .NET 8+ only.
+- Core: PowerShell 7.4+ with packaged binaries for the selected runtime TFM.
 #>
 
-# Determine preferred TFM (Core uses net8.0 on .NET 8+; Desktop uses net472)
+# Determine preferred TFM for the current PowerShell edition/version
 $here    = $PSScriptRoot
 $binRoot = Join-Path $here 'bin'
 
@@ -27,12 +28,13 @@ if ($PSVersionTable.PSEdition -eq 'Desktop') {
     $tfm = 'net472'
 }
 else {
-    $fx    = [System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription  # ".NET 8.0.7", ".NET 9.0.x"
-    $major = [int]([regex]::Match($fx, '(\d+)\.').Groups[1].Value)
-    if ($major -ge 8) {
-        $tfm = 'net8.0'
-    } else {
-        throw "This module requires PowerShell 7.4+ (.NET 8+). Detected: $fx. Please upgrade PowerShell: https://aka.ms/powershell"
+    switch ($PSVersionTable.PSVersion) {
+        { $_.Major -eq 7 -and $_.Minor -eq 4 } { $tfm = 'net8.0'; break }
+        { $_.Major -eq 7 -and $_.Minor -eq 5 } { $tfm = 'net9.0'; break }
+        { $_.Major -eq 7 -and $_.Minor -ge 6 } { $tfm = 'net10.0'; break }
+        default {
+            throw "Unsupported PowerShell version: $($PSVersionTable.PSVersion)"
+        }
     }
 }
 

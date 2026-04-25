@@ -70,23 +70,29 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public string? Name { get; set; }
 
         /// <summary>
-        /// The webhook policy to use for cryptographic signing of the messages.
+        /// Whether this webhook uses OpenID Connect Discovery to allow retrieval of the policy's public key via a JWKS endpoint.
         /// </summary>
         [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        public bool? OpenidConnectDiscovery { get; set; }
+
+        /// <summary>
+        /// The webhook policy to use for cryptographic signing of the messages.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
         public string? WebhookPolicyId { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="WebhookQuery"/> that defines which fields of the <see cref="WebhookCreatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
         public WebhookQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -124,6 +130,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Name)))
                 input.Name = Name;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(OpenidConnectDiscovery)))
+                input.OpenidConnectDiscovery = OpenidConnectDiscovery;
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(WebhookPolicyId)))
                 input.WebhookPolicyId = WebhookPolicyId;

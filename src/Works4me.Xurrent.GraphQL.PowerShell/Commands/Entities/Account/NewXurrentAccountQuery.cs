@@ -42,6 +42,13 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public OrganizationQuery? Organization { get; set; }
 
         /// <summary>
+        /// Includes a nested <see cref="VirtualAgentDesignQuery"/> in the <see cref="AccountQuery"/>, allowing related <see cref="VirtualAgentDesign"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 4, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public VirtualAgentDesignQuery? VirtualAgentDesign { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet processing logic.<br/>
         /// Builds a <see cref="AccountQuery"/> based on the provided parameters and writes the configured query object to the pipeline.<br/>
         /// </summary>
@@ -57,6 +64,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (Organization is not null && MyInvocation.BoundParameters.ContainsKey(nameof(Organization)))
                 query.SelectOrganization(Organization);
+
+            if (VirtualAgentDesign is not null && MyInvocation.BoundParameters.ContainsKey(nameof(VirtualAgentDesign)))
+                query.SelectVirtualAgentDesign(VirtualAgentDesign);
 
             query.Select(Properties);
             WriteObject(query);

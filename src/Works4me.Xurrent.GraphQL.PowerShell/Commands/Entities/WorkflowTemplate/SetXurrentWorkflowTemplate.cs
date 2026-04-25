@@ -63,71 +63,77 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public string? Note { get; set; }
 
         /// <summary>
-        /// Recurrence for the workflow template.
+        /// Whether permissions to complete linked requests are restricted for workflows based on this template.
         /// </summary>
         [Parameter(Mandatory = false, Position = 8, ValueFromPipelineByPropertyName = true)]
+        public bool? PreventRequestCompletion { get; set; }
+
+        /// <summary>
+        /// Recurrence for the workflow template.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
         public RecurrenceInput? Recurrence { get; set; }
 
         /// <summary>
         /// The service that should be selected in the Service field of a new workflow when it is being created based on the template.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
         public string? ServiceId { get; set; }
 
         /// <summary>
         /// An identifier for the client application submitting the resource or the name of an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 10, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
         public string? Source { get; set; }
 
         /// <summary>
         /// The unique identifier of the resource in an external system.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 11, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
         public string? SourceID { get; set; }
 
         /// <summary>
         /// Short description that needs to be copied to the Subject field of a new workflow when it is being created based on the template.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 12, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
         public string? Subject { get; set; }
 
         /// <summary>
         /// Identifiers of task template relations to remove from the workflow template.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 13, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
         public string[]? TaskTemplateRelationsToDelete { get; set; }
 
         /// <summary>
         /// UI extension that is to be applied to the record.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 14, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
         public string? UiExtensionId { get; set; }
 
         /// <summary>
         /// The person who will be responsible for coordinating the workflows that will be generated automatically in accordance with the recurrence schedule.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 15, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
         public string? WorkflowManagerId { get; set; }
 
         /// <summary>
         /// The type that needs to be selected in the Type field of a new workflow when it is being created based on the template.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 16, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
         public string? WorkflowTypeId { get; set; }
 
         /// <summary>
         /// Specifies the <see cref="WorkflowTemplateQuery"/> that defines which fields of the <see cref="WorkflowTemplateUpdatePayload"/> are returned by the mutation.<br/>
         /// If omitted, a default selection is used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
         public WorkflowTemplateQuery ResponseQuery { get; set; } = new();
 
         /// <summary>
         /// Specifies the <see cref="XurrentPowerShellClient"/> instance to use for execution.<br/>
         /// If omitted, the first created client instance or active connection will be used.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public XurrentPowerShellClient? Client { get; set; }
 
@@ -162,6 +168,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Note)))
                 input.Note = Note;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(PreventRequestCompletion)))
+                input.PreventRequestCompletion = PreventRequestCompletion;
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Recurrence)))
                 input.Recurrence = Recurrence;

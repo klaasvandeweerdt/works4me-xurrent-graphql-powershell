@@ -139,58 +139,65 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         public AttachmentQuery? RemarksAttachments { get; set; }
 
         /// <summary>
-        /// Includes a nested <see cref="ServiceInstanceQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="ServiceInstance"/> data to be retrieved as part of the query.
+        /// Includes a nested <see cref="RfcTypeActivityIDQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="RfcTypeActivityID"/> data to be retrieved as part of the query.
         /// </summary>
         [Parameter(Mandatory = false, Position = 17, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public RfcTypeActivityIDQuery? RfcTypeActivityIDs { get; set; }
+
+        /// <summary>
+        /// Includes a nested <see cref="ServiceInstanceQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="ServiceInstance"/> data to be retrieved as part of the query.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ServiceInstanceQuery? ServiceInstance { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="ParentServiceInstanceQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="ParentServiceInstance"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 18, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ParentServiceInstanceQuery? ServiceInstances { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="PersonQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="Person"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 19, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public PersonQuery? ServiceLevelManager { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="ServiceOfferingQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="ServiceOffering"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 20, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public ServiceOfferingQuery? ServiceOffering { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="SiteQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="Site"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 21, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public SiteQuery? Sites { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="SkillPoolQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="SkillPool"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 22, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public SkillPoolQuery? SkillPools { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="StandardServiceRequestActivityIDQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="StandardServiceRequestActivityID"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 23, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public StandardServiceRequestActivityIDQuery? StandardServiceRequestActivityIDs { get; set; }
 
         /// <summary>
         /// Includes a nested <see cref="AccountQuery"/> in the <see cref="ServiceLevelAgreementQuery"/>, allowing related <see cref="Account"/> data to be retrieved as part of the query.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 24, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public AccountQuery? SupportDomain { get; set; }
 
@@ -198,7 +205,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Applies one or more <see cref="QueryFilter{ServiceLevelAgreementFilterField}"/> conditions to the <see cref="ServiceLevelAgreementQuery"/>.<br/>
         /// Filters restrict which <see cref="ServiceLevelAgreement"/> data is returned from the Xurrent GraphQL API.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 25, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public QueryFilter<ServiceLevelAgreementFilterField>[]? Filters { get; set; }
 
@@ -206,7 +213,7 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
         /// Adds a free-form search filter to the <see cref="ServiceLevelAgreementQuery"/>.<br/>
         /// This parameter enables simple text-based filtering of <see cref="ServiceLevelAgreement"/> results.<br/>
         /// </summary>
-        [Parameter(Mandatory = false, Position = 26, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 27, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string? Search { get; set; }
 
@@ -267,6 +274,9 @@ namespace Works4me.Xurrent.GraphQL.PowerShell.Commands
 
             if (RemarksAttachments is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RemarksAttachments)))
                 query.SelectRemarksAttachments(RemarksAttachments);
+
+            if (RfcTypeActivityIDs is not null && MyInvocation.BoundParameters.ContainsKey(nameof(RfcTypeActivityIDs)))
+                query.SelectRfcTypeActivityIDs(RfcTypeActivityIDs);
 
             if (ServiceInstance is not null && MyInvocation.BoundParameters.ContainsKey(nameof(ServiceInstance)))
                 query.SelectServiceInstance(ServiceInstance);
